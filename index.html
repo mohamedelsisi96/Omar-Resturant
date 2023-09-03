@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Omar Resturant</title>
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/animate.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="shortcut icon" href="pic/logo.png" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="spin justify-content-center align-items-center">
+      <div class="spinner">
+        <div class="cube1"></div>
+        <div class="cube2"></div>
+      </div>
+    </div>
+
+    <div
+      id="tab"
+      class="text-white d-flex justify-content-center align-items-stretch"
+    >
+      <div
+        class="navBar bg-black position-relative d-flex flex-column justify-content-between px-3"
+      >
+        <ul class="list-unstyled text-white p-4">
+          <li class="alink py-3">
+            <a href="#search" id="search" class="text-decoration-none"
+              >Search</a
+            >
+          </li>
+          <li class="alink py-3">
+            <a
+              href="#category"
+              id="category"
+              class="text-decoration-none animate__animated animate__slideInUp"
+              >Categories</a
+            >
+          </li>
+          <li class="alink py-3">
+            <a
+              href="#area"
+              id="area"
+              class="text-decoration-none animate__animated animate__slideInUp"
+              >Area</a
+            >
+          </li>
+          <li class="alink py-3">
+            <a
+              href="#ingredients"
+              id="ingredients"
+              class="text-decoration-none animate__animated animate__slideInUp"
+              >Ingredients</a
+            >
+          </li>
+          <li class="alink py-3">
+            <a
+              href="#contact"
+              id="contact"
+              class="text-decoration-none animate__animated animate__slideInUp"
+              >Contact</a
+            >
+          </li>
+        </ul>
+        <div class="nav-footer">
+          <div class="icons">
+            <i class="fa-brands fa-facebook meal"></i>
+            <i class="fa-brands fa-twitter meal"></i>
+            <i class="fa-solid fa-globe meal"></i>
+          </div>
+          <div class="footer">
+            <p>Copyright All Rights Reserved Omar El-sisi.</p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="bg-white text-black text-center d-flex flex-column justify-content-between p-3"
+      >
+        <img class="logo" src="pic/logo.png" />
+        <p class="open">
+          <i class="fa-solid open-close-icon fa-2x fa-align-justify"></i>
+        </p>
+        <div class="d-flex flex-column align-items-center">
+          <i class="fa-solid fa-globe d-block p-2"></i>
+          <i class="fa-solid fa-share-nodes"></i>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="container w-75" id="searchContainer">
+    <div class="row py-4 ">
+    
+    </div></div> -->
+    <div class="master">
+      <div class="container w-75">
+        <div class="row py-4" id="searchContainer"></div>
+      </div>
+
+      <div class="container">
+        <div id="dataRow" class="row py-4 g-4"></div>
+      </div>
+    </div>
+
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.0.min.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>

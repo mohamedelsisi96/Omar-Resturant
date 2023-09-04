@@ -27,9 +27,13 @@ $(".alink").click(function () {
 $(".open").click(function () {
    if($("#tab").css("left")=="0px"){
     $("#tab").animate({left:-navWidth},1000)
+    $("#openClose").removeClass("open-close-icon")
+    $("#openClose").addClass("fa-xmark")
   
    } else {
     $("#tab").animate({left:"0px"},1000)
+    $("#openClose").addClass("open-close-icon")
+    $("#openClose").removeClass("fa-xmark")
    }
  
 });
@@ -40,6 +44,18 @@ $(".open").click(function () {
         var apiResponce=await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${datain}`)
         var myData=await apiResponce.json()
         var finalDesp=await myData.meals[0]
+        let recipesContainer=""
+        for(k=1;k<20;k++){
+            var resEx = finalDesp[`strIngredient${k}`]
+            if (resEx !== ""){
+                recipesContainer+=`<li class="alert alert-info m-2 p-1">${resEx}</li>`
+            }else{
+                continue;
+            }
+        }
+
+
+
         var cartone=``
         cartone+=`      <div class="col-md-4 text-white">
         <img class="w-100 rounded-3" src="${finalDesp.strMealThumb}" alt="">
@@ -52,8 +68,10 @@ $(".open").click(function () {
         <h3><span class="fw-bolder">Category : </span>${finalDesp.strCategory}</h3>
         <h3>Recipes :</h3>
         <ul class="list-unstyled d-flex g-3 flex-wrap">
-            <li class="alert alert-info m-2 p-1">2 large Potatoes</li><li class="alert alert-info m-2 p-1">2 tbs Butter</li><li class="alert alert-info m-2 p-1">150g Cheese</li><li class="alert alert-info m-2 p-1">1 large Onion</li><li class="alert alert-info m-2 p-1">1 large Red Pepper</li><li class="alert alert-info m-2 p-1">Pinch Red Chile Flakes</li>
+        
+            ${recipesContainer}
         </ul>
+     
 
         <h3>Tags :</h3>
         <ul class="list-unstyled d-flex g-3 flex-wrap">
@@ -189,7 +207,7 @@ async function getCategory() {
 
 
 //area section
-  /////errrrrrrrrrrrrrrrrrrr
+
 async function getNcont(cuntname){
   var apiResponce=await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${cuntname}`)
   
@@ -283,7 +301,7 @@ area.addEventListener("click",function(){
     })
 
     //validation section    
-    function validationName(valname){
+ let validName= function validationName(valname){
         var regexName = /^([A-Z][a-z]{3,10})(\s)?([A-Z]{1}[a-z]{3,10})?$/i
     if (regexName.test(valname)){
         document.querySelector("#nameInput").classList.add("is-valid")
@@ -298,7 +316,7 @@ area.addEventListener("click",function(){
         return false
     }
 }
-function validationEmail(valEmail){
+let validEmail=function validationEmail(valEmail){
     var regexEmail = /^\w{3,}.?\w{4,}?@(\w{3,}).(\w{3,})$/i
 if (regexEmail.test(valEmail)){
     document.querySelector("#emailInput").classList.add("is-valid")
@@ -313,7 +331,7 @@ if (regexEmail.test(valEmail)){
     return false
 }
 }
-function validationPhone(valPhone){
+let validPhone=function validationPhone(valPhone){
     var regexPhone=/^(01(0|1|2))\d{8}$/
 if (regexPhone.test(valPhone)){
     document.querySelector("#phoneInput").classList.add("is-valid")
@@ -327,7 +345,7 @@ if (regexPhone.test(valPhone)){
     document.querySelector("#phoneAlert").classList.remove("d-none")
     return false
 }}
-function validationAge(valAge){
+let validAge=function validationAge(valAge){
     var regexAge=/^[1-7][1-9]|80$/
 if (regexAge.test(valAge)){
     document.querySelector("#ageInput").classList.add("is-valid")
@@ -341,7 +359,7 @@ if (regexAge.test(valAge)){
     document.querySelector("#ageAlert").classList.remove("d-none")
     return false
 }}
-function validationPass(valPass){
+let validPass=function validationPass(valPass){
     var regexPass = /^\d{6,10}[A-Z]{1}[a-z]{1}$/
 if (regexPass.test(valPass)){
     document.querySelector("#passwordInput").classList.add("is-valid")
@@ -355,9 +373,9 @@ if (regexPass.test(valPass)){
     document.querySelector("#passwordAlert").classList.remove("d-none")
     return false
 }}
-function validationPassre(valPassre){
+let validRePass=function validationPassre(valPassre){
     var regexPass = /^\d{6,10}[A-Z]{1}[a-z]{1}$/
-if (regexPass.test(valPassre)){
+if ((regexPass.test(valPassre))&&document.querySelector("#passwordInput").value===valPassre){
     document.querySelector("#repasswordInput").classList.add("is-valid")
     document.querySelector("#repasswordInput").classList.remove("is-invalid")
     document.querySelector("#repasswordAlert").classList.add("d-none")
@@ -369,9 +387,7 @@ if (regexPass.test(valPassre)){
     document.querySelector("#repasswordAlert").classList.remove("d-none")
     return false
 }}
-// if(validationName(valname)&&validationEmail(valEmail)&&validationPhone(valPhone)&&validationAge(valAge)&&validationPass(valPass)&&validationPassre(valPassre)){
-//     document.querySelector("#submitBtn").removeAttribute("disabled")
-// }
+
     contact.addEventListener("click",function(){
         dataRow.innerHTML=`<div class="contact min-vh-100 d-flex justify-content-center align-items-center">
         <div class="container w-75 text-center">
@@ -416,5 +432,11 @@ if (regexPass.test(valPassre)){
             <button id="submitBtn" disabled="" class="btn btn-outline-danger px-2 mt-3">Submit</button>
         </div>
     </div>`
-    })
+    }
+    
+    )
+    if(validName()&&validEmail()&&validPhone()&&validAge()&&validPass()&&validRePass()){
+        document.querySelector("#submitBtn").removeAttribute("disabled")
+    }
+
 

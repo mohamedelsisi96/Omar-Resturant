@@ -6,6 +6,8 @@ const contact= document.querySelector("#contact")
 const search= document.querySelector("#search")
 const searchContainer= document.querySelector("#searchContainer")
 const linkes=document.querySelectorAll(".alink a")
+/////////
+/////////////
 let navWidth = $(".navBar").innerWidth();
 console.log(navWidth);
 $(document).ready(function () {
@@ -301,7 +303,7 @@ area.addEventListener("click",function(){
     })
 
     //validation section    
- let validName= function validationName(valname){
+  function validationName(valname){
         var regexName = /^([A-Z][a-z]{3,10})(\s)?([A-Z]{1}[a-z]{3,10})?$/i
     if (regexName.test(valname)){
         document.querySelector("#nameInput").classList.add("is-valid")
@@ -316,7 +318,7 @@ area.addEventListener("click",function(){
         return false
     }
 }
-let validEmail=function validationEmail(valEmail){
+function validationEmail(valEmail){
     var regexEmail = /^\w{3,}.?\w{4,}?@(\w{3,}).(\w{3,})$/i
 if (regexEmail.test(valEmail)){
     document.querySelector("#emailInput").classList.add("is-valid")
@@ -331,7 +333,7 @@ if (regexEmail.test(valEmail)){
     return false
 }
 }
-let validPhone=function validationPhone(valPhone){
+function validationPhone(valPhone){
     var regexPhone=/^(01(0|1|2))\d{8}$/
 if (regexPhone.test(valPhone)){
     document.querySelector("#phoneInput").classList.add("is-valid")
@@ -345,7 +347,7 @@ if (regexPhone.test(valPhone)){
     document.querySelector("#phoneAlert").classList.remove("d-none")
     return false
 }}
-let validAge=function validationAge(valAge){
+function validationAge(valAge){
     var regexAge=/^[1-7][1-9]|80$/
 if (regexAge.test(valAge)){
     document.querySelector("#ageInput").classList.add("is-valid")
@@ -359,7 +361,7 @@ if (regexAge.test(valAge)){
     document.querySelector("#ageAlert").classList.remove("d-none")
     return false
 }}
-let validPass=function validationPass(valPass){
+function validationPass(valPass){
     var regexPass = /^\d{6,10}[A-Z]{1}[a-z]{1}$/
 if (regexPass.test(valPass)){
     document.querySelector("#passwordInput").classList.add("is-valid")
@@ -373,7 +375,7 @@ if (regexPass.test(valPass)){
     document.querySelector("#passwordAlert").classList.remove("d-none")
     return false
 }}
-let validRePass=function validationPassre(valPassre){
+function validationPassre(valPassre){
     var regexPass = /^\d{6,10}[A-Z]{1}[a-z]{1}$/
 if ((regexPass.test(valPassre))&&document.querySelector("#passwordInput").value===valPassre){
     document.querySelector("#repasswordInput").classList.add("is-valid")
@@ -429,14 +431,17 @@ if ((regexPass.test(valPassre))&&document.querySelector("#passwordInput").value=
                     </div>
                 </div>
             </div>
-            <button id="submitBtn" disabled="" class="btn btn-outline-danger px-2 mt-3">Submit</button>
+            <button id="submitBtn"  class="btn btn-outline-danger px-2 mt-3">Submit</button>
         </div>
     </div>`
+
     }
-    
+ 
     )
-    if(validName()&&validEmail()&&validPhone()&&validAge()&&validPass()&&validRePass()){
-        document.querySelector("#submitBtn").removeAttribute("disabled")
-    }
+  
+   
+
+
+   
 
 
